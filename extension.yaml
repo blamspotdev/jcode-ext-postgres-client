@@ -1,0 +1,71 @@
+id: jcode.ext.pgclient
+name: Postgres Client
+version: 0.1.0
+type: dbmanager
+publisher: jcode
+authors: [jcode, blamspotdev]
+supportedArches: [arm64]
+description: A PostgreSQL studio — browse databases in the drawer, then manage tables, run queries, view ER diagrams, security, and back up / restore in a full editor-area studio.
+longDescription: >
+  A PostgreSQL client and database studio. The left drawer shows the databases on the server
+  configured in Settings; tap one to open a full studio as an editor tab with Tables, Query,
+  Diagram, Security and Backup panes. Browse and edit table data, view table structure, create /
+  rename / drop tables, run ad-hoc SQL with a results grid, see an auto-generated entity-relationship
+  diagram of the schema, inspect roles and privileges, and back up / restore databases with pg_dump /
+  pg_restore. Uses the ARM64-native psql client, installed on first use from the distro's own apt
+  repo. Connects to any reachable PostgreSQL — a remote host, a cloud instance, or a server on your
+  network. Connection details (host, port, role, password, database, SSL mode) live in app Settings,
+  so no credentials are entered in the UI.
+api:
+  minApiVersion: 1
+  capabilities: [exec, config, workbench]
+settings:
+  - key: pg.host
+    label: Host
+    type: str
+    default: localhost
+    description: PostgreSQL server host (a local server in this runtime, or a remote/cloud host).
+  - key: pg.port
+    label: Port
+    type: int
+    default: 5432
+    description: PostgreSQL server port.
+  - key: pg.user
+    label: Role (user)
+    type: str
+    default: postgres
+    description: PostgreSQL login role.
+  - key: pg.password
+    label: Password
+    type: str
+    description: Role password. Stored locally on this device.
+  - key: pg.database
+    label: Initial database
+    type: str
+    default: postgres
+    description: Database used to enumerate the server (the studio opens the one you tap).
+  - key: pg.sslmode
+    label: SSL mode
+    type: enum
+    default: prefer
+    options: [disable, prefer, require]
+    description: libpq sslmode — disable for a local server, require for cloud servers that mandate TLS.
+requires:
+  extensions: []
+
+# --- header fields merged from extension.jehm ---
+shortDescription: >-
+  A PostgreSQL studio — run a native local server or connect to any host, browse databases, manage tables, run queries,
+  view ER diagrams, security, and back up / restore.
+minJCodeVersion: 1.0.0
+targetJCodeVersion: 1.0.0
+category: Databases
+subcategory: PostgreSQL
+images:
+  icon: media/icon.png
+  samples: []
+  walkthrough: []
+entry:
+  manifest: extension.yaml
+  ui: www/index.html
+  libs: []
