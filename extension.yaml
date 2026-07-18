@@ -1,6 +1,6 @@
 id: jcode.ext.pgclient
 name: Postgres Client
-version: 0.1.0
+version: 0.1.1
 type: dbmanager
 publisher: jcode
 authors: [jcode, blamspotdev]
@@ -52,6 +52,7 @@ settings:
     description: libpq sslmode — disable for a local server, require for cloud servers that mandate TLS.
 requires:
   extensions: []
+  sdks: [postgresql]
 
 # --- header fields merged from extension.jehm ---
 shortDescription: >-
