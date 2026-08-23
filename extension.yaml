@@ -6,16 +6,6 @@ publisher: jcode
 authors: [jcode, blamspotdev]
 supportedArches: [arm64]
 description: A PostgreSQL studio — browse databases in the drawer, then manage tables, run queries, view ER diagrams, security, and back up / restore in a full editor-area studio.
-longDescription: >
-  A PostgreSQL client and database studio. The left drawer shows the databases on the server
-  configured in Settings; tap one to open a full studio as an editor tab with Tables, Query,
-  Diagram, Security and Backup panes. Browse and edit table data, view table structure, create /
-  rename / drop tables, run ad-hoc SQL with a results grid, see an auto-generated entity-relationship
-  diagram of the schema, inspect roles and privileges, and back up / restore databases with pg_dump /
-  pg_restore. Uses the ARM64-native psql client, installed on first use from the distro's own apt
-  repo. Connects to any reachable PostgreSQL — a remote host, a cloud instance, or a server on your
-  network. Connection details (host, port, role, password, database, SSL mode) live in app Settings,
-  so no credentials are entered in the UI.
 api:
   minApiVersion: 1
   capabilities: [exec, config, workbench]
