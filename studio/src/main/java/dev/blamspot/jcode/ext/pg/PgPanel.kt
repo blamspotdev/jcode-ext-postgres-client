@@ -145,7 +145,10 @@ private fun LocalServer(state: PanelState) {
         modifier = Modifier.fillMaxWidth().padding(horizontal = Space.lg, vertical = Space.sm),
         verticalArrangement = Arrangement.spacedBy(Space.xs),
     ) {
-        Row(verticalAlignment = Alignment.CenterVertically) {
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(Space.xs),
+        ) {
             FieldLabel("Local server")
             Box(modifier = Modifier.weight(1f))
             if (!state.local.initialized && !state.local.running) {
@@ -156,6 +159,14 @@ private fun LocalServer(state: PanelState) {
                     busy = state.busy,
                 )
             } else if (state.local.running) {
+                // Set up again, on a cluster that already exists, only restarts the server and
+                // rewrites the credentials — which is the way back from a password this end and the
+                // server no longer agree on, and there is otherwise no way back at all.
+                CompactOutlinedButton(
+                    text = "Reconfigure",
+                    onClick = { state.setUpLocal() },
+                    enabled = !state.busy,
+                )
                 CompactOutlinedButton(text = "Stop", onClick = { state.stopLocal() }, enabled = !state.busy)
             } else {
                 CompactFilledButton(

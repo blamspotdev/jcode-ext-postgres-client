@@ -217,6 +217,11 @@ internal class StudioState(
             grid = g
             connected = g.ok || g.error.isEmpty()
             report(if (g.ok) g.message else g.error, failed = !g.ok)
+            // A statement rather than a result set may well have been a CREATE or a DROP, and the
+            // table it made should be in the list without being asked for again. Only then: after a
+            // SELECT there is nothing new to learn, and re-reading the catalogue per query would
+            // put two more round trips on every one of them.
+            if (g.ok && g.columns.isEmpty()) loadTables()
             busy = false
         }
     }
