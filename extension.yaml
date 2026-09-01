@@ -91,7 +91,7 @@ requires:
 shortDescription: >-
   A PostgreSQL studio — run a native local server or connect to any host, browse databases, manage tables, run queries,
   view ER diagrams, security, and back up / restore.
-minJCodeVersion: 1.0.0
+minJCodeVersion: 1.7.3
 targetJCodeVersion: 1.0.0
 category: Databases
 subcategory: PostgreSQL
